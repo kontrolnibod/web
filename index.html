@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Kontrolní bod – 14denní zavedení kontrolních bodů pro dodatky a zveřejňování smluv</title>
   <meta name="description" content="14denní zavedení kontrolních bodů pro dodatky a zveřejňování smluv. Bez IT, bez interních dat. DoD: platí od data X + 1× použito." />
+
   <style>
     :root{
       --bg:#f5f7fb;
@@ -15,21 +16,25 @@
       --slate:#1e293b;      /* slate-800 */
       --accent:#f59e0b;     /* amber-500 */
       --accent2:#b45309;    /* amber-700 */
-      --max:1040px;
-      --r:16px;
-      --shadow: 0 8px 22px rgba(15,23,42,.06);
+      --max:1060px;
+      --r:18px;
+      --shadow: 0 10px 26px rgba(15,23,42,.07);
+      --shadow2: 0 2px 12px rgba(15,23,42,.05);
     }
+
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
+      background: radial-gradient(900px 420px at 20% -10%, rgba(245,158,11,.10), transparent 60%),
+                  radial-gradient(900px 420px at 90% 0%, rgba(30,41,59,.10), transparent 55%),
+                  var(--bg);
       color: var(--text);
       line-height: 1.55;
     }
     a{ color: inherit; }
-    .wrap{ max-width:var(--max); margin:0 auto; padding: 22px 18px 56px; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 22px 18px 64px; }
 
     /* Top bar */
     .topbar{
@@ -47,68 +52,107 @@
       flex-wrap:wrap;
     }
     .brand{
-      display:flex; flex-direction:column; gap:2px;
+      display:flex; align-items:center; gap:10px;
     }
-    .brand b{ font-size:14px; letter-spacing:.2px; }
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      background: linear-gradient(180deg, rgba(30,41,59,.10), rgba(30,41,59,.04));
+      border:1px solid var(--line);
+      display:grid; place-items:center;
+      box-shadow: var(--shadow2);
+    }
+    .brand-text{ display:flex; flex-direction:column; gap:2px; }
+    .brand b{ font-size:14px; letter-spacing:.2px; color: var(--slate); }
     .brand span{ font-size:12.5px; color:var(--muted); }
+
     .contact{
       display:flex; gap:10px; flex-wrap:wrap; align-items:center;
       font-size:12.5px; color:var(--muted);
     }
     .chip{
-      display:inline-flex; align-items:center;
+      display:inline-flex; align-items:center; gap:8px;
       padding: 7px 10px;
       border: 1px solid var(--line);
       border-radius: 999px;
       background: var(--surface);
       color: var(--slate);
       text-decoration:none;
+      box-shadow: var(--shadow2);
     }
+
+    /* Icons */
+    .ic{ width:16px; height:16px; display:inline-block; vertical-align:middle; }
+    .ic-lg{ width:18px; height:18px; }
+    .ic-muted svg{ stroke: var(--muted); }
+    .ic-slate svg{ stroke: var(--slate); }
+    .ic-fill svg{ fill: var(--accent); stroke: none; }
 
     /* Buttons */
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
       padding: 10px 12px;
       border-radius: 12px;
       border: 1px solid var(--line);
       background: var(--surface);
       text-decoration:none;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--slate);
-      box-shadow: 0 2px 10px rgba(15,23,42,.04);
+      box-shadow: var(--shadow2);
     }
     .btn:hover{ border-color: #cbd5e1; }
     .btn.primary{
-      border-color: rgba(245,158,11,.35);
-      background: linear-gradient(180deg, rgba(245,158,11,.28), rgba(245,158,11,.14));
+      border-color: rgba(245,158,11,.45);
+      background: linear-gradient(180deg, rgba(245,158,11,.34), rgba(245,158,11,.14));
       color: #111827;
     }
     .btn.primary:hover{
-      border-color: rgba(245,158,11,.55);
-      background: linear-gradient(180deg, rgba(245,158,11,.34), rgba(245,158,11,.16));
+      border-color: rgba(245,158,11,.65);
+      background: linear-gradient(180deg, rgba(245,158,11,.40), rgba(245,158,11,.16));
+    }
+
+    /* Sections / spacing */
+    .section{ margin-top: 26px; }
+    .section-header{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      margin-bottom: 12px;
+    }
+    .section-title{
+      display:flex; align-items:center; gap:10px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: 16px;
+      letter-spacing: .1px;
+      color: var(--slate);
+    }
+    .section-sub{
+      margin:0;
+      font-size: 12.5px;
+      color: var(--muted);
+      max-width: 72ch;
     }
 
     /* Hero */
-    .hero{ padding: 28px 0 10px; }
+    .hero{ padding: 34px 0 10px; }
     h1{
       margin: 0 0 10px;
-      font-size: 34px;
-      line-height: 1.14;
-      letter-spacing: -0.4px;
+      font-size: 36px;
+      line-height: 1.12;
+      letter-spacing: -0.45px;
       color: var(--slate);
     }
     .lead{
       margin: 0;
-      max-width: 82ch;
+      max-width: 86ch;
       color: var(--muted);
       font-size: 16.5px;
     }
-    .badges{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 16px; }
+    .badges{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 18px; }
     .badge{
-      display:inline-flex; align-items:center;
-      padding: 8px 10px;
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 9px 10px;
       border: 1px solid var(--line);
-      border-radius: 12px;
+      border-radius: 14px;
       background: var(--surface);
       color: var(--slate);
       font-size: 12.5px;
@@ -116,7 +160,7 @@
     }
     .hero-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px; }
     .note{
-      margin-top: 10px;
+      margin-top: 12px;
       font-size: 12.5px;
       color: var(--muted);
     }
@@ -126,10 +170,9 @@
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 14px;
-      margin-top: 18px;
+      margin-top: 14px;
     }
     .card{
-      grid-column: span 12;
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: var(--r);
@@ -139,61 +182,72 @@
     .span-7{ grid-column: span 7; }
     .span-5{ grid-column: span 5; }
     .span-6{ grid-column: span 6; }
-    .card h2{
-      margin: 0 0 10px;
-      font-size: 16px;
+    .span-12{ grid-column: span 12; }
+
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 14px;
       color: var(--slate);
-      letter-spacing: .1px;
     }
     .card p{ margin:0; color: var(--muted); }
-    ul{ margin: 10px 0 0 18px; padding:0; color: var(--muted); }
-    li{ margin: 6px 0; }
-    .muted{ color: var(--muted); }
-    .small{ font-size: 12.5px; color: var(--muted); }
+    ul{ margin: 10px 0 0 0; padding:0; color: var(--muted); list-style:none; }
+    li{ margin: 8px 0; display:flex; gap:10px; align-items:flex-start; }
+    .li-text b{ color: var(--slate); }
 
     /* Steps */
     .steps{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-      margin-top: 10px;
     }
     .step{
       border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px;
+      border-radius: 16px;
+      padding: 14px;
       background: #fbfdff;
+      box-shadow: var(--shadow2);
     }
-    .step b{ display:block; margin-bottom: 4px; color: var(--slate); }
+    .step-head{
+      display:flex; align-items:center; gap:10px; margin-bottom:6px;
+      font-weight: 900; color: var(--slate);
+    }
+    .small{ font-size: 12.5px; color: var(--muted); }
 
     /* FAQ */
     .faq details{
       border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px;
+      border-radius: 16px;
+      padding: 12px 12px;
       background: #fbfdff;
+      box-shadow: var(--shadow2);
     }
     .faq details + details{ margin-top: 10px; }
     .faq summary{
       cursor: pointer;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--slate);
+      display:flex; align-items:center; gap:10px;
+      list-style:none;
     }
+    .faq summary::-webkit-details-marker{ display:none; }
     .faq .ans{ margin-top: 8px; color: var(--muted); }
 
-    /* Price block */
+    /* Price */
     .price{
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:flex-start;
+      display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:flex-start;
     }
-    .price strong{ color: var(--slate); }
-    .highlight{
-      border-left: 4px solid rgba(245,158,11,.75);
+    .pricebox{
+      flex: 1 1 340px;
+      border-left: 4px solid rgba(245,158,11,.78);
       padding-left: 12px;
     }
+    .price strong{ color: var(--slate); }
+    .cta-row{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
 
+    /* Footer */
     footer{
-      margin-top: 26px;
-      padding-top: 14px;
+      margin-top: 34px;
+      padding-top: 16px;
       border-top: 1px solid var(--line);
       display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
       color: var(--muted);
@@ -203,25 +257,69 @@
     @media (max-width: 920px){
       .span-7,.span-5,.span-6{ grid-column: span 12; }
       .steps{ grid-template-columns: 1fr; }
-      h1{ font-size: 28px; }
+      h1{ font-size: 30px; }
     }
   </style>
 </head>
+
 <body>
+
+  <!-- inline SVG symbol defs (icons) -->
+  <svg width="0" height="0" style="position:absolute">
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M20 6L9 17l-5-5" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4z" fill="none" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24">
+      <path d="M13 2L3 14h8l-1 8 11-14h-8l0-6z" fill="none" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10z" fill="none" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 6v6l4 2" fill="none" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <path d="M4 4h16v16H4z" fill="none" stroke-width="2.0" stroke-linejoin="round"/>
+      <path d="M4 7l8 6 8-6" fill="none" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24">
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 5.2 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7c.2 1.2.5 2.3.9 3.4a2 2 0 0 1-.5 2.1L10 11a16 16 0 0 0 3 3l.8-.4a2 2 0 0 1 2.1-.5c1.1.4 2.2.7 3.4.9A2 2 0 0 1 22 16.9z"
+            fill="none" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h13" fill="none" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M13 6l6 6-6 6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
 
   <div class="topbar">
     <div class="topbar-inner">
       <div class="brand">
-        <b>Kontrolní bod</b>
-        <span>Kontrolní body pro dodatky a zveřejňování smluv</span>
+        <div class="logo">
+          <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span>
+        </div>
+        <div class="brand-text">
+          <b>Kontrolní bod</b>
+          <span>Kontrolní body pro dodatky a zveřejňování smluv</span>
+        </div>
       </div>
 
       <div class="contact">
         <span>Kontakt:</span>
-        <a class="chip" href="mailto:TVUJ_EMAIL@DOMENA.CZ">TVUJ_EMAIL@DOMENA.CZ</a>
-        <a class="chip" href="tel:+420000000000">+420 000 000 000</a>
+        <a class="chip" href="mailto:TVUJ_EMAIL@DOMENA.CZ">
+          <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-mail"/></svg></span>
+          TVUJ_EMAIL@DOMENA.CZ
+        </a>
+        <a class="chip" href="tel:+420000000000">
+          <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg></span>
+          +420 000 000 000
+        </a>
         <a class="btn" href="#produkt">Specifikace</a>
-        <a class="btn primary" href="mailto:TVUJ_EMAIL@DOMENA.CZ?subject=Kontroln%C3%AD%20bod%20%E2%80%93%2020%20min%20(stop%2Ftest)&body=Dobr%C3%BD%20den%2C%0A%0Am%C3%A1m%20z%C3%A1jem%20o%2020%20min%20sch%C5%AFzku%20(stop%2F14denn%C3%AD%20test).%0APros%C3%ADm%20navrhn%C4%9Bte%202%20term%C3%ADny.%0A%0AD%C4%9Bkuji.">Domluvit 20 min</a>
+        <a class="btn primary" href="mailto:TVUJ_EMAIL@DOMENA.CZ?subject=Kontroln%C3%AD%20bod%20%E2%80%93%2020%20min%20(stop%2Ftest)&body=Dobr%C3%BD%20den%2C%0A%0Am%C3%A1m%20z%C3%A1jem%20o%2020%20min%20sch%C5%AFzku%20(stop%2F14denn%C3%AD%20test).%0APros%C3%ADm%20navrhn%C4%9Bte%202%20term%C3%ADny.%0A%0AD%C4%9Bkuji.">
+          Domluvit 20 min
+          <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span>
+        </a>
       </div>
     </div>
   </div>
@@ -236,14 +334,14 @@
       </p>
 
       <div class="badges">
-        <span class="badge">Bez IT</span>
-        <span class="badge">Bez interních dat</span>
-        <span class="badge">Reverzibilní test</span>
-        <span class="badge">Auditovatelný krok</span>
+        <span class="badge"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-bolt"/></svg></span>Bez IT</span>
+        <span class="badge"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span>Bez interních dat</span>
+        <span class="badge"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-clock"/></svg></span>Reverzibilní test</span>
+        <span class="badge"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Auditovatelný krok</span>
       </div>
 
       <div class="hero-actions">
-        <a class="btn primary" href="#checkout">Stop / 14denní test</a>
+        <a class="btn primary" href="#checkout">Stop / 14denní test <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
         <a class="btn" href="#faq">FAQ</a>
       </div>
 
@@ -252,99 +350,184 @@
       </div>
     </section>
 
-    <div class="grid" id="produkt">
-      <section class="card span-7">
-        <h2>Co přesně dodáváme</h2>
-        <ul>
-          <li><b>Checklist</b> – kontrolní otázky (volba: před podpisem / před zveřejněním)</li>
-          <li><b>Pravidlo dodatků</b> – zelená/žlutá/červená + výjimka (kdy 2. podpis / krátké zdůvodnění)</li>
-          <li><b>1str měsíční přehled</b> z veřejných dat (Registr smluv) – dashboard v1</li>
-        </ul>
-      </section>
+    <section class="section" id="produkt">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="logo" style="width:30px;height:30px;border-radius:12px;">
+            <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
+          </span>
+          <h2>Specifikace produktu</h2>
+        </div>
+        <p class="section-sub">Jednostránkový instalační produkt. Cíl je zavést kontrolní bod do toku a mít dohledatelnou stopu.</p>
+      </div>
 
-      <section class="card span-5">
-        <h2>Výsledek (měřitelně)</h2>
-        <ul>
-          <li><b>Platí od data X</b> (jedna interní věta)</li>
-          <li><b>Dohledatelné rozhodnutí</b> (kdo a proč)</li>
-          <li><b>Použito 1×</b> do 14 dnů (nebo pojmenovaná překážka)</li>
-        </ul>
-        <p class="small" style="margin-top:10px;">Bez slibů úspor. Tohle je instalační produkt.</p>
-      </section>
+      <div class="grid">
+        <section class="card span-7">
+          <h3>Co přesně dodáváme</h3>
+          <ul>
+            <li>
+              <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
+              <div class="li-text"><b>Checklist</b> – kontrolní otázky (volba: před podpisem / před zveřejněním)</div>
+            </li>
+            <li>
+              <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
+              <div class="li-text"><b>Pravidlo dodatků</b> – zelená/žlutá/červená + výjimka (kdy 2. podpis / zdůvodnění)</div>
+            </li>
+            <li>
+              <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
+              <div class="li-text"><b>1str měsíční přehled</b> z veřejných dat (Registr smluv) – dashboard v1</div>
+            </li>
+          </ul>
+        </section>
 
-      <section class="card span-12">
-        <h2>Jak to probíhá</h2>
+        <section class="card span-5">
+          <h3>Definition of Done (DoD)</h3>
+          <ul>
+            <li>
+              <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
+              <div class="li-text">Jmenovaný <b>owner</b> (kdo může říct „odteď platí“)</div>
+            </li>
+            <li>
+              <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
+              <div class="li-text">Jedna interní věta: <b>platí od data X</b></div>
+            </li>
+            <li>
+              <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
+              <div class="li-text"><b>Použito min. 1×</b> do 14 dnů (nebo pojmenovaná překážka)</div>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="logo" style="width:30px;height:30px;border-radius:12px;">
+            <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-clock"/></svg></span>
+          </span>
+          <h2>Jak to probíhá</h2>
+        </div>
+        <p class="section-sub">Tři kroky. Na konci Call 2 rozhodnutí stop / start.</p>
+      </div>
+
+      <div class="card">
         <div class="steps">
           <div class="step">
-            <b>1) Call 1 (2–4 min)</b>
-            <div class="small">Domluvení Call 2. Bez detailů.</div>
+            <div class="step-head"><span class="ic ic-slate ic-lg"><svg viewBox="0 0 24 24"><use href="#i-bolt"/></svg></span>1) Call 1 (2–4 min)</div>
+            <div class="small">Domluvíme Call 2. Bez detailů a bez posílání dlouhých podkladů.</div>
           </div>
           <div class="step">
-            <b>2) Call 2 (20 min)</b>
-            <div class="small">Ukázka + 6 otázek → rozhodnutí stop / start.</div>
+            <div class="step-head"><span class="ic ic-slate ic-lg"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>2) Call 2 (20 min)</div>
+            <div class="small">Ukázka + 6 otázek. Na konci stop / start 14denního testu.</div>
           </div>
           <div class="step">
-            <b>3) Instalace + ověření</b>
+            <div class="step-head"><span class="ic ic-slate ic-lg"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span>3) Instalace + ověření</div>
             <div class="small">2× 30 min. Platí od data X. Do 14 dnů 1× použito.</div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="card span-6">
-        <h2>Co je potřeba od vás</h2>
-        <ul>
-          <li>1× <b>owner</b> (tajemník nebo finance)</li>
-          <li>2× <b>30 minut</b> (instalace, ověření)</li>
-          <li>1 <b>reálný případ</b> do 14 dnů (dodatek / zveřejnění)</li>
-        </ul>
-      </section>
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="logo" style="width:30px;height:30px;border-radius:12px;">
+            <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span>
+          </span>
+          <h2>Co je potřeba od vás</h2>
+        </div>
+        <p class="section-sub">Minimum, bez kterého test nedává smysl.</p>
+      </div>
 
-      <section class="card span-6 faq" id="faq">
-        <h2>FAQ (co to není)</h2>
-        <details>
-          <summary>Je to audit / právní posudek?</summary>
-          <div class="ans">Ne. Nehodnotíme správnost smluv. Zavádíme procesní kontrolní bod + dohledatelnost „kdo rozhodl a proč“.</div>
-        </details>
-        <details>
-          <summary>Potřebujete interní data nebo IT přístupy?</summary>
-          <div class="ans">Ne. Produkt je navržen tak, aby fungoval bez IT a bez interních dat.</div>
-        </details>
-        <details>
-          <summary>Co když nemáme kapacitu?</summary>
-          <div class="ans">Pokud není owner + 2×30 min + 1 případ, test nedává smysl. Radši stop než „papír do šuplíku“.</div>
-        </details>
-        <details>
-          <summary>Proč to nemůžeme udělat sami?</summary>
-          <div class="ans">Můžete. Platíte za to, že to dodáme jako hotový balíček, nastavíme do vašeho toku a do 14 dnů je to reálně použité.</div>
-        </details>
-      </section>
+      <div class="grid">
+        <section class="card span-6">
+          <h3>Minimální kapacita</h3>
+          <ul>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">1× <b>owner</b> (tajemník nebo finance)</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">2× <b>30 minut</b> (instalace, ověření)</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">1 <b>reálný případ</b> do 14 dnů (dodatek / zveřejnění)</div></li>
+          </ul>
+        </section>
 
-      <section class="card span-12" id="checkout">
-        <h2>Cena a garance</h2>
+        <section class="card span-6 faq" id="faq">
+          <h3>FAQ (co to není)</h3>
+
+          <details>
+            <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Je to audit / právní posudek?</summary>
+            <div class="ans">Ne. Nehodnotíme správnost smluv. Zavádíme procesní kontrolní bod + dohledatelnost „kdo rozhodl a proč“.</div>
+          </details>
+
+          <details>
+            <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Potřebujete interní data nebo IT přístupy?</summary>
+            <div class="ans">Ne. Produkt funguje bez IT a bez interních dat.</div>
+          </details>
+
+          <details>
+            <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Co když nemáme kapacitu?</summary>
+            <div class="ans">Pokud není owner + 2×30 min + 1 případ, test nedává smysl. Radši stop než „papír do šuplíku“.</div>
+          </details>
+
+          <details>
+            <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Proč to nemůžeme udělat sami?</summary>
+            <div class="ans">Můžete. Platíte za hotový balíček + instalaci do toku a za to, že do 14 dnů proběhne reálné použití.</div>
+          </details>
+        </section>
+      </div>
+    </section>
+
+    <section class="section" id="checkout">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="logo" style="width:30px;height:30px;border-radius:12px;">
+            <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-bolt"/></svg></span>
+          </span>
+          <h2>Cena a garance</h2>
+        </div>
+        <p class="section-sub">Transparentní, podmíněná garance (aby se z toho nestal “papír do šuplíku”).</p>
+      </div>
+
+      <div class="card">
         <div class="price">
-          <div class="highlight">
+          <div class="pricebox">
             <div><strong>Cena:</strong> 39 000 Kč bez DPH (14 dnů)</div>
             <div><strong>Fakturace:</strong> po instalaci</div>
           </div>
-          <div class="muted" style="max-width:72ch;">
+          <div class="small" style="flex: 1 1 340px;">
             <strong>Garance (podmíněná):</strong> pokud při splnění vstupů (owner + 2×30 min + 1 případ)
             nedodáme DoD do 14 dnů, neúčtujeme / 100% kredit.
           </div>
         </div>
-        <div style="margin-top:12px;">
-          <a class="btn primary" href="mailto:TVUJ_EMAIL@DOMENA.CZ?subject=Kontroln%C3%AD%20bod%20%E2%80%93%2020%20min%20(stop%2Ftest)&body=Dobr%C3%BD%20den%2C%0A%0Am%C3%A1m%20z%C3%A1jem%20o%2020%20min%20sch%C5%AFzku%20(stop%2F14denn%C3%AD%20test).%0APros%C3%ADm%20navrhn%C4%9Bte%202%20term%C3%ADny.%0A%0AD%C4%9Bkuji.">Domluvit 20 min (stop/test)</a>
-        </div>
-      </section>
 
-      <section class="card span-12">
-        <h2>Kontakt (dodavatel)</h2>
-        <p>
-          <b>[Tvoje jméno]</b><br/>
+        <div class="cta-row">
+          <a class="btn primary" href="mailto:TVUJ_EMAIL@DOMENA.CZ?subject=Kontroln%C3%AD%20bod%20%E2%80%93%2020%20min%20(stop%2Ftest)&body=Dobr%C3%BD%20den%2C%0A%0Am%C3%A1m%20z%C3%A1jem%20o%2020%20min%20sch%C5%AFzku%20(stop%2F14denn%C3%AD%20test).%0APros%C3%ADm%20navrhn%C4%9Bte%202%20term%C3%ADny.%0A%0AD%C4%9Bkuji.">
+            Domluvit 20 min (stop/test)
+            <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span>
+          </a>
+          <a class="btn" href="#kontakt">Kontakt</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kontakt">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="logo" style="width:30px;height:30px;border-radius:12px;">
+            <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-mail"/></svg></span>
+          </span>
+          <h2>Kontakt (dodavatel)</h2>
+        </div>
+        <p class="section-sub">Bez identity to v B2G padá. Vyplň reálné údaje.</p>
+      </div>
+
+      <div class="card">
+        <p style="margin:0">
+          <strong>[Tvoje jméno]</strong><br/>
           IČO: [doplnit] · Sídlo: [doplnit]<br/>
           Email: <a href="mailto:TVUJ_EMAIL@DOMENA.CZ">TVUJ_EMAIL@DOMENA.CZ</a> · Tel: <a href="tel:+420000000000">+420 000 000 000</a>
         </p>
-      </section>
-    </div>
+      </div>
+    </section>
 
     <footer>
       <div>© <span id="y"></span> Kontrolní bod</div>
