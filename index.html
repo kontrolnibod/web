@@ -10,16 +10,20 @@
     :root{
       --bg:#f5f7fb;
       --surface:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --line:#e2e8f0;
-      --slate:#1e293b;
-      --accent:#f59e0b;
-      --accent2:#b45309;
+      --text:#0f172a;       /* slate-900 */
+      --muted:#475569;      /* slate-600 */
+      --line:#e2e8f0;       /* slate-200 */
+      --slate:#1e293b;      /* slate-800 */
+      --accent:#f59e0b;     /* amber-500 */
+      --accent2:#b45309;    /* amber-700 */
       --max:1060px;
       --r:18px;
       --shadow: 0 10px 26px rgba(15,23,42,.07);
       --shadow2: 0 2px 12px rgba(15,23,42,.05);
+
+      /* NEW: spacing scale */
+      --sec-gap: 42px;
+      --sec-gap-mobile: 34px;
     }
 
     *{ box-sizing:border-box; }
@@ -34,8 +38,13 @@
       line-height: 1.55;
     }
     a{ color: inherit; }
+
+    /* NEW: offset anchors for sticky header */
+    section[id]{ scroll-margin-top: 86px; }
+
     .wrap{ max-width:var(--max); margin:0 auto; padding: 22px 18px 64px; }
 
+    /* Top bar */
     .topbar{
       position: sticky;
       top: 0;
@@ -64,17 +73,55 @@
     .brand b{ font-size:14px; letter-spacing:.2px; color: var(--slate); }
     .brand span{ font-size:12.5px; color:var(--muted); }
 
+    .right{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+
+    .nav{
+      display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.65);
+      box-shadow: var(--shadow2);
+    }
+    .nav a{
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--slate);
+      text-decoration:none;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+    .nav a:hover{
+      background: var(--surface);
+      border-color: var(--line);
+    }
+
     .contact{
       display:flex; gap:10px; flex-wrap:wrap; align-items:center;
       font-size:12.5px; color:var(--muted);
     }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--slate);
+      text-decoration:none;
+      box-shadow: var(--shadow2);
+      white-space: nowrap;
+    }
 
+    /* Icons */
     .ic{ width:16px; height:16px; display:inline-block; vertical-align:middle; }
     .ic-lg{ width:18px; height:18px; }
     .ic-muted svg{ stroke: var(--muted); }
     .ic-slate svg{ stroke: var(--slate); }
-    .ic-fill svg{ fill: var(--accent); stroke: none; }
 
+    /* Buttons */
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
       padding: 10px 12px;
@@ -82,9 +129,10 @@
       border: 1px solid var(--line);
       background: var(--surface);
       text-decoration:none;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--slate);
       box-shadow: var(--shadow2);
+      white-space: nowrap;
     }
     .btn:hover{ border-color: #cbd5e1; }
     .btn.primary{
@@ -97,27 +145,30 @@
       background: linear-gradient(180deg, rgba(245,158,11,.40), rgba(245,158,11,.16));
     }
 
-    .section{ margin-top: 64px; }
+    /* Sections / spacing */
+    .section{ margin-top: var(--sec-gap); }
     .section-header{
       display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
     .section-title{
-      display:flex; align-items:center; gap:12px;
+      display:flex; align-items:center; gap:10px;
     }
     .section-title h2{
       margin:0;
-      font-size: 24px;
-      letter-spacing: -.2px;
+      font-size: 22px;              /* NEW: bigger H2 */
+      letter-spacing: -0.2px;
       color: var(--slate);
+      line-height: 1.2;
     }
     .section-sub{
       margin:0;
-      font-size: 12.5px;
+      font-size: 13px;
       color: var(--muted);
-      max-width: 72ch;
+      max-width: 78ch;
     }
 
+    /* Hero */
     .hero{ padding: 34px 0 10px; }
     h1{
       margin: 0 0 10px;
@@ -150,6 +201,7 @@
       color: var(--muted);
     }
 
+    /* Layout */
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -178,6 +230,7 @@
     li{ margin: 8px 0; display:flex; gap:10px; align-items:flex-start; }
     .li-text b{ color: var(--slate); }
 
+    /* Steps */
     .steps{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -196,6 +249,7 @@
     }
     .small{ font-size: 12.5px; color: var(--muted); }
 
+    /* FAQ */
     .faq details{
       border: 1px solid var(--line);
       border-radius: 16px;
@@ -214,6 +268,7 @@
     .faq summary::-webkit-details-marker{ display:none; }
     .faq .ans{ margin-top: 8px; color: var(--muted); }
 
+    /* Price */
     .price{
       display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:flex-start;
     }
@@ -225,8 +280,9 @@
     .price strong{ color: var(--slate); }
     .cta-row{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
 
+    /* Footer */
     footer{
-      margin-top: 34px;
+      margin-top: 44px;
       padding-top: 16px;
       border-top: 1px solid var(--line);
       display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
@@ -238,12 +294,16 @@
       .span-7,.span-5,.span-6{ grid-column: span 12; }
       .steps{ grid-template-columns: 1fr; }
       h1{ font-size: 30px; }
+      .section{ margin-top: var(--sec-gap-mobile); }
+      .section-title h2{ font-size: 20px; }
+      section[id]{ scroll-margin-top: 120px; }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- inline SVG symbol defs (icons) -->
   <svg width="0" height="0" style="position:absolute">
     <symbol id="i-check" viewBox="0 0 24 24">
       <path d="M20 6L9 17l-5-5" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -284,11 +344,15 @@
         </div>
       </div>
 
-      <div class="contact">
-        <a class="btn" href="#produkt">Produkt</a>
-        <a class="btn" href="#proces">Proces</a>
-        <a class="btn" href="#vstupy">Vstupy</a>
-        <a class="btn" href="#cena">Cena</a>
+      <div class="right">
+        <!-- NEW: section nav -->
+        <nav class="nav" aria-label="Sekce">
+          <a href="#produkt">Produkt</a>
+          <a href="#proces">Proces</a>
+          <a href="#vstupy">Vstupy</a>
+          <a href="#cena">Cena</a>
+        </nav>
+
         <a class="btn primary" href="mailto:TVUJ_EMAIL@DOMENA.CZ?subject=Kontroln%C3%AD%20bod%20%E2%80%93%2020%20min%20(stop%2Ftest)&body=Dobr%C3%BD%20den%2C%0A%0Am%C3%A1m%20z%C3%A1jem%20o%2020%20min%20sch%C5%AFzku%20(stop%2F14denn%C3%AD%20test).%0APros%C3%ADm%20navrhn%C4%9Bte%202%20term%C3%ADny.%0A%0AD%C4%9Bkuji.">
           Domluvit 20 min
           <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span>
@@ -315,7 +379,7 @@
 
       <div class="hero-actions">
         <a class="btn primary" href="#cena">Stop / 14denní test <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
-        <a class="btn" href="#faq">FAQ</a>
+        <a class="btn" href="#kontakt">Kontakt</a>
       </div>
 
       <div class="note">
@@ -323,13 +387,14 @@
       </div>
     </section>
 
+    <!-- Produkt -->
     <section class="section" id="produkt">
       <div class="section-header">
         <div class="section-title">
           <span class="logo" style="width:30px;height:30px;border-radius:12px;">
             <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
           </span>
-          <h2>Produkt</h2>
+          <h2>Specifikace produktu</h2>
         </div>
         <p class="section-sub">Jednostránkový instalační produkt. Cíl je zavést kontrolní bod do toku a mít dohledatelnou stopu.</p>
       </div>
@@ -358,7 +423,7 @@
           <ul>
             <li>
               <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
-              <div class="li-text">Jmenovaný <b>owner</b> (kdo může říct „odteď platí")</div>
+              <div class="li-text">Jmenovaný <b>owner</b> (kdo může říct „odteď platí“)</div>
             </li>
             <li>
               <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
@@ -373,13 +438,14 @@
       </div>
     </section>
 
+    <!-- Proces -->
     <section class="section" id="proces">
       <div class="section-header">
         <div class="section-title">
           <span class="logo" style="width:30px;height:30px;border-radius:12px;">
             <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-clock"/></svg></span>
           </span>
-          <h2>Proces</h2>
+          <h2>Jak to probíhá</h2>
         </div>
         <p class="section-sub">Tři kroky. Na konci Call 2 rozhodnutí stop / start.</p>
       </div>
@@ -402,13 +468,14 @@
       </div>
     </section>
 
+    <!-- Vstupy -->
     <section class="section" id="vstupy">
       <div class="section-header">
         <div class="section-title">
           <span class="logo" style="width:30px;height:30px;border-radius:12px;">
             <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span>
           </span>
-          <h2>Vstupy</h2>
+          <h2>Co je potřeba od vás</h2>
         </div>
         <p class="section-sub">Minimum, bez kterého test nedává smysl.</p>
       </div>
@@ -423,12 +490,12 @@
           </ul>
         </section>
 
-        <section class="card span-6 faq" id="faq">
+        <section class="card span-6 faq" aria-label="FAQ">
           <h3>FAQ (co to není)</h3>
 
           <details>
             <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Je to audit / právní posudek?</summary>
-            <div class="ans">Ne. Nehodnotíme správnost smluv. Zavádíme procesní kontrolní bod + dohledatelnost „kdo rozhodl a proč".</div>
+            <div class="ans">Ne. Nehodnotíme správnost smluv. Zavádíme procesní kontrolní bod + dohledatelnost „kdo rozhodl a proč“.</div>
           </details>
 
           <details>
@@ -438,7 +505,7 @@
 
           <details>
             <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Co když nemáme kapacitu?</summary>
-            <div class="ans">Pokud není owner + 2×30 min + 1 případ, test nedává smysl. Radši stop než „papír do šuplíku".</div>
+            <div class="ans">Pokud není owner + 2×30 min + 1 případ, test nedává smysl. Radši stop než „papír do šuplíku“.</div>
           </details>
 
           <details>
@@ -449,15 +516,16 @@
       </div>
     </section>
 
+    <!-- Cena -->
     <section class="section" id="cena">
       <div class="section-header">
         <div class="section-title">
           <span class="logo" style="width:30px;height:30px;border-radius:12px;">
             <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-bolt"/></svg></span>
           </span>
-          <h2>Cena</h2>
+          <h2>Cena a garance</h2>
         </div>
-        <p class="section-sub">Transparentní, podmíněná garance (aby se z toho nestal "papír do šuplíku").</p>
+        <p class="section-sub">Transparentní, podmíněná garance (aby se z toho nestal “papír do šuplíku”).</p>
       </div>
 
       <div class="card">
@@ -482,13 +550,14 @@
       </div>
     </section>
 
+    <!-- Kontakt -->
     <section class="section" id="kontakt">
       <div class="section-header">
         <div class="section-title">
           <span class="logo" style="width:30px;height:30px;border-radius:12px;">
             <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-mail"/></svg></span>
           </span>
-          <h2>Kontakt</h2>
+          <h2>Kontakt (dodavatel)</h2>
         </div>
         <p class="section-sub">Bez identity to v B2G padá. Vyplň reálné údaje.</p>
       </div>
