@@ -6,92 +6,201 @@
   <title>Kontrolní bod – 14denní zavedení kontrolních bodů pro dodatky a zveřejňování smluv</title>
   <meta name="description" content="14denní zavedení kontrolních bodů pro dodatky a zveřejňování smluv. Bez IT, bez interních dat. DoD: platí od data X + 1× použito." />
   <style>
-    :root { --max: 980px; --pad: 18px; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height:1.5; color:#111; background:#fff; }
-    a { color: inherit; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 28px var(--pad); }
-    header { display:flex; gap:16px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; }
-    .brand { font-weight:800; letter-spacing:0.2px; }
-    .tag { font-size: 14px; opacity:0.75; }
-    .hero { padding: 26px 0 12px; }
-    h1 { margin: 0 0 10px; font-size: 34px; line-height:1.15; }
-    .lead { margin: 0; font-size: 18px; opacity:0.9; max-width: 72ch; }
-    .grid { display:grid; gap:14px; grid-template-columns: repeat(12, 1fr); margin-top: 22px; }
-    .card { border:1px solid #e7e7e7; border-radius: 14px; padding: 16px; background:#fff; }
-    .col-7 { grid-column: span 7; }
-    .col-5 { grid-column: span 5; }
-    .col-12 { grid-column: span 12; }
-    h2 { margin: 0 0 8px; font-size: 18px; }
-    ul { margin: 8px 0 0 18px; padding:0; }
-    .pill { display:inline-block; border:1px solid #e7e7e7; border-radius:999px; padding:6px 10px; font-size: 13px; margin: 4px 6px 0 0; }
-    .cta { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top: 12px; }
-    .btn { display:inline-block; border:1px solid #111; border-radius: 12px; padding: 10px 12px; text-decoration:none; font-weight:700; }
-    .btn.secondary { border-color:#e7e7e7; font-weight:600; }
-    .muted { opacity:0.78; }
-    .small { font-size: 13px; }
-    footer { margin-top: 26px; padding-top: 14px; border-top: 1px solid #eee; display:flex; gap:14px; justify-content:space-between; flex-wrap:wrap; }
-    @media (max-width: 860px) {
-      .col-7, .col-5 { grid-column: span 12; }
-      h1 { font-size: 28px; }
+    :root{
+      --bg:#0b0c10;
+      --card:#12141a;
+      --text:#e9ecf1;
+      --muted:#b8c0cf;
+      --line:rgba(255,255,255,.10);
+      --accent:#7dd3fc;
+      --max:1024px;
+      --r:16px;
     }
-    .kpi { display:flex; gap:10px; flex-wrap:wrap; margin-top: 8px; }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text); background: radial-gradient(1200px 700px at 20% -10%, rgba(125,211,252,.18), transparent 60%),
+                         radial-gradient(1000px 600px at 90% 0%, rgba(167,139,250,.18), transparent 55%),
+                         var(--bg);
+      line-height:1.5;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:22px 18px 48px; }
+    .topbar{
+      position:sticky; top:0; z-index:10;
+      background: rgba(11,12,16,.70);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar-inner{
+      max-width:var(--max); margin:0 auto; padding:14px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+    }
+    .brand b{ font-size:15px; letter-spacing:.2px; }
+    .brand span{ font-size:13px; color:var(--muted); }
+    .contact{
+      font-size:13px; color:var(--muted); display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border:1px solid var(--line); border-radius:999px;
+      background:rgba(255,255,255,.04);
+      font-size:13px; color:var(--muted);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:12px; font-weight:800;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+    }
+    .btn.primary{
+      border-color: rgba(125,211,252,.45);
+      background: linear-gradient(180deg, rgba(125,211,252,.20), rgba(125,211,252,.08));
+    }
+    .btn:hover{ background: rgba(255,255,255,.10); }
+    .btn.primary:hover{ background: linear-gradient(180deg, rgba(125,211,252,.26), rgba(125,211,252,.10)); }
+
+    .hero{ padding:34px 0 10px; }
+    h1{
+      margin:0 0 10px; font-size:34px; line-height:1.12;
+      letter-spacing:-.3px;
+    }
+    .lead{
+      margin:0; max-width:78ch; color:var(--muted); font-size:16px;
+    }
+    .hero-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+    .note{ margin-top:10px; color:var(--muted); font-size:12.5px; }
+    .kpis{ display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+
+    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:14px; margin-top:18px; }
+    .card{
+      border:1px solid var(--line); border-radius:var(--r);
+      background: rgba(255,255,255,.04);
+      padding:16px;
+    }
+    .card h2{ margin:0 0 10px; font-size:16px; letter-spacing:.1px; }
+    .card p{ margin:0; color:var(--muted); }
+    ul{ margin:10px 0 0 18px; padding:0; color:var(--muted); }
+    li{ margin:6px 0; }
+    .span-7{ grid-column:span 7; }
+    .span-5{ grid-column:span 5; }
+    .span-6{ grid-column:span 6; }
+    .span-12{ grid-column:span 12; }
+
+    .steps{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:10px;
+    }
+    .step{
+      border:1px solid var(--line); border-radius:14px; padding:12px;
+      background: rgba(255,255,255,.03);
+    }
+    .step b{ display:block; margin-bottom:4px; }
+    .small{ font-size:12.5px; color:var(--muted); }
+
+    .faq details{
+      border:1px solid var(--line); border-radius:14px; padding:12px 12px;
+      background: rgba(255,255,255,.03);
+    }
+    .faq details + details{ margin-top:10px; }
+    .faq summary{ cursor:pointer; font-weight:800; }
+    .faq .ans{ margin-top:8px; color:var(--muted); }
+
+    footer{
+      margin-top:28px; padding-top:16px; border-top:1px solid var(--line);
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      color:var(--muted); font-size:12.5px;
+    }
+
+    @media (max-width: 900px){
+      .span-7,.span-5,.span-6{ grid-column:span 12; }
+      .steps{ grid-template-columns:1fr; }
+      h1{ font-size:28px; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div>
-        <div class="brand">Kontrolní bod</div>
-        <div class="tag">Kontrolní body pro dodatky a zveřejňování smluv</div>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <b>Kontrolní bod</b>
+        <span>Kontrolní body pro dodatky a zveřejňování smluv</span>
       </div>
-      <div class="small muted">
-        Kontakt: <a href="mailto:tvuj@email.cz">tvuj@email.cz</a> · <a href="tel:+420000000000">+420 000 000 000</a>
+      <div class="contact">
+        <span>Kontakt:</span>
+        <a class="pill" href="mailto:tvuj@email.cz">tvuj@email.cz</a>
+        <a class="pill" href="tel:+420000000000">+420 000 000 000</a>
+        <a class="btn" href="#produkt">Specifikace</a>
+        <a class="btn primary" href="mailto:tvuj@email.cz?subject=Kontroln%C3%AD%20bod%20%E2%80%93%2020%20min%20(stop%2Ftest)&body=Dobr%C3%BD%20den%2C%0A%0Am%C3%A1m%20z%C3%A1jem%20o%2020%20min%20sch%C5%AFzku%20(stop%2F14denn%C3%AD%20test).%0APros%C3%ADm%20navrhn%C4%9Bte%202%20term%C3%ADny.%0A%0AD%C4%9Bkuji.">Domluvit 20 min</a>
       </div>
-    </header>
+    </div>
+  </div>
 
+  <div class="wrap">
     <section class="hero">
       <h1>14denní zavedení kontrolních bodů<br/>pro dodatky a zveřejňování smluv</h1>
       <p class="lead">
         Krátký test bez IT a bez interních dat: zavedeme checklist + pravidlo dodatků a do 14 dnů to 1× použijeme na reálném případu.
-        Cíl je snížit dohledávání a zvýšit obhajitelnost procesu.
+        Cíl je snížit dohledávání a zvýšit obhajitelnost.
       </p>
 
-      <div class="kpi">
+      <div class="kpis">
         <span class="pill">Bez IT</span>
         <span class="pill">Bez interních dat</span>
-        <span class="pill">Auditovatelný krok</span>
         <span class="pill">Reverzibilní test</span>
+        <span class="pill">Auditovatelný krok</span>
       </div>
 
-      <div class="cta">
-        <a class="btn" href="mailto:tvuj@email.cz?subject=Kontrolní%20bod%20%E2%80%93%2020%20min%20(stop%2Ftest)&body=Dobr%C3%BD%20den%2C%0A%0Am%C3%A1m%20z%C3%A1jem%20o%2020%20min%20sch%C5%AFzku%20(stop%2F14denn%C3%AD%20test).%0APros%C3%ADm%20navrhn%C4%9Bte%202%20term%C3%ADny.%0A%0AD%C4%9Bkuji.">
-          Domluvit 20 min (stop/test)
-        </a>
-        <a class="btn secondary" href="#produkt">Co přesně dodáváme</a>
+      <div class="hero-actions">
+        <a class="btn primary" href="#checkout">Stop / 14denní test</a>
+        <a class="btn" href="#faq">FAQ</a>
       </div>
-      <p class="small muted">Pozn.: Nejde o audit ani právní posudek. Negarantujeme úspory; garantujeme zavedení a první použití (viz DoD).</p>
+
+      <div class="note">
+        Nejde o audit ani právní posudek. Negarantujeme úspory; garantujeme zavedení a první použití (DoD).
+      </div>
     </section>
 
     <div class="grid" id="produkt">
-      <section class="card col-7">
+      <section class="card span-7">
         <h2>Výstupy (dodávka)</h2>
         <ul>
-          <li><strong>Checklist</strong> – kontrolní otázky (volba: před podpisem / před zveřejněním)</li>
-          <li><strong>Pravidlo dodatků</strong> – zelená/žlutá/červená + výjimka (kdy je 2. podpis / krátké zdůvodnění)</li>
-          <li><strong>1str měsíční přehled</strong> z veřejných dat (Registr smluv) – jednoduchý dashboard v1</li>
+          <li><b>Checklist</b> – kontrolní otázky (volba: před podpisem / před zveřejněním)</li>
+          <li><b>Pravidlo dodatků</b> – zelená/žlutá/červená + výjimka (kdy 2. podpis / krátké zdůvodnění)</li>
+          <li><b>1str měsíční přehled</b> z veřejných dat (Registr smluv) – dashboard v1</li>
         </ul>
       </section>
 
-      <section class="card col-5">
+      <section class="card span-5">
         <h2>Definition of Done (DoD)</h2>
         <ul>
-          <li>Jmenovaný <strong>owner</strong> (kdo může říct „odteď platí“)</li>
-          <li>Jedna interní věta: <strong>platí od data X</strong></li>
-          <li><strong>Použito min. 1×</strong> do 14 dnů (nebo pojmenovaná překážka proč ne)</li>
+          <li>Jmenovaný <b>owner</b> (kdo může říct „odteď platí“)</li>
+          <li>Jedna interní věta: <b>platí od data X</b></li>
+          <li><b>Použito min. 1×</b> do 14 dnů (nebo pojmenovaná překážka proč ne)</li>
         </ul>
       </section>
 
-      <section class="card col-7">
+      <section class="card span-12">
+        <h2>Jak to probíhá (prakticky)</h2>
+        <div class="steps">
+          <div class="step">
+            <b>1) Call 1 (2–4 min)</b>
+            <div class="small">Domluvíme Call 2. Nic nevysvětlujeme do hloubky.</div>
+          </div>
+          <div class="step">
+            <b>2) Call 2 (20 min)</b>
+            <div class="small">Ukázka + 6 otázek. Na konci rozhodnutí stop / start testu.</div>
+          </div>
+          <div class="step">
+            <b>3) Instalace + ověření</b>
+            <div class="small">2× 30 min. Platí od data X. Do 14 dnů 1× použito.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card span-6">
         <h2>Vstupy od obce (minimální kapacita)</h2>
         <ul>
           <li>1× owner (tajemník nebo finance)</li>
@@ -100,8 +209,8 @@
         </ul>
       </section>
 
-      <section class="card col-5">
-        <h2>Výluky</h2>
+      <section class="card span-6">
+        <h2>Výluky (co to není)</h2>
         <ul>
           <li>Nejde o audit ani právní posudek</li>
           <li>Neřešíme správnost smluv; řešíme procesní kontrolní bod a dohledatelnost</li>
@@ -109,33 +218,46 @@
         </ul>
       </section>
 
-      <section class="card col-12">
+      <section class="card span-12" id="checkout">
         <h2>Cena a garance</h2>
-        <p class="muted" style="margin:0;">
-          Cena: <strong>39&nbsp;000 Kč bez DPH</strong> (14 dnů). Fakturace po instalaci.
-          <br/>
-          Garance: pokud při splnění vstupů (owner + 2×30 min + 1 případ) nedodáme DoD do 14 dnů, <strong>neúčtujeme / 100% kredit</strong>.
+        <p>
+          Cena: <b>39 000 Kč bez DPH</b> (14 dnů). Fakturace po instalaci.<br/>
+          Garance: pokud při splnění vstupů (owner + 2×30 min + 1 případ) nedodáme DoD do 14 dnů, <b>neúčtujeme / 100% kredit</b>.
         </p>
       </section>
 
-      <section class="card col-12">
+      <section class="card span-12 faq" id="faq">
+        <h2>FAQ</h2>
+        <details>
+          <summary>Je to audit / kontrola?</summary>
+          <div class="ans">Ne. Nehodnotíme správnost smluv. Zavádíme jednoduchý procesní krok + dohledatelnost „kdo rozhodl a proč“.</div>
+        </details>
+        <details>
+          <summary>Potřebujete interní data nebo IT přístupy?</summary>
+          <div class="ans">Ne. Produkt je postavený tak, aby fungoval bez IT a bez interních dat. Integrace je jen „kde v procesu se checklist používá“.</div>
+        </details>
+        <details>
+          <summary>Co když nemáme kapacitu?</summary>
+          <div class="ans">Vaše kapacita je owner + 2×30 minut + 1 případ. Pokud tohle nejde, test nedává smysl.</div>
+        </details>
+      </section>
+
+      <section class="card span-12">
         <h2>Kontakt (dodavatel)</h2>
-        <p style="margin:0;">
-          <strong>[Tvoje jméno]</strong><br/>
+        <p>
+          <b>[Tvoje jméno]</b><br/>
           IČO: [doplnit] · Sídlo: [doplnit]<br/>
           Email: <a href="mailto:tvuj@email.cz">tvuj@email.cz</a> · Tel: <a href="tel:+420000000000">+420 000 000 000</a>
         </p>
       </section>
     </div>
 
-    <footer class="small muted">
+    <footer>
       <div>© <span id="y"></span> Kontrolní bod</div>
-      <div>Jednostránková specifikace produktu · bez marketingu · pro rychlé rozhodnutí stop/test</div>
+      <div>Produktová specifikace pro rychlé rozhodnutí stop/test · bez marketingu</div>
     </footer>
   </div>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
