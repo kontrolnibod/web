@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kontrolní bod – 14denní zavedení kontrolních bodů pro dodatky a zveřejňování smluv</title>
+  <meta name="description" content="14denní zavedení kontrolních bodů pro dodatky a zveřejňování smluv. Bez IT, bez interních dat. DoD: platí od data X + 1× použito." />
+  <style>
+    :root { --max: 980px; --pad: 18px; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height:1.5; color:#111; background:#fff; }
+    a { color: inherit; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 28px var(--pad); }
+    header { display:flex; gap:16px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; }
+    .brand { font-weight:800; letter-spacing:0.2px; }
+    .tag { font-size: 14px; opacity:0.75; }
+    .hero { padding: 26px 0 12px; }
+    h1 { margin: 0 0 10px; font-size: 34px; line-height:1.15; }
+    .lead { margin: 0; font-size: 18px; opacity:0.9; max-width: 72ch; }
+    .grid { display:grid; gap:14px; grid-template-columns: repeat(12, 1fr); margin-top: 22px; }
+    .card { border:1px solid #e7e7e7; border-radius: 14px; padding: 16px; background:#fff; }
+    .col-7 { grid-column: span 7; }
+    .col-5 { grid-column: span 5; }
+    .col-12 { grid-column: span 12; }
+    h2 { margin: 0 0 8px; font-size: 18px; }
+    ul { margin: 8px 0 0 18px; padding:0; }
+    .pill { display:inline-block; border:1px solid #e7e7e7; border-radius:999px; padding:6px 10px; font-size: 13px; margin: 4px 6px 0 0; }
+    .cta { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top: 12px; }
+    .btn { display:inline-block; border:1px solid #111; border-radius: 12px; padding: 10px 12px; text-decoration:none; font-weight:700; }
+    .btn.secondary { border-color:#e7e7e7; font-weight:600; }
+    .muted { opacity:0.78; }
+    .small { font-size: 13px; }
+    footer { margin-top: 26px; padding-top: 14px; border-top: 1px solid #eee; display:flex; gap:14px; justify-content:space-between; flex-wrap:wrap; }
+    @media (max-width: 860px) {
+      .col-7, .col-5 { grid-column: span 12; }
+      h1 { font-size: 28px; }
+    }
+    .kpi { display:flex; gap:10px; flex-wrap:wrap; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="brand">Kontrolní bod</div>
+        <div class="tag">Kontrolní body pro dodatky a zveřejňování smluv</div>
+      </div>
+      <div class="small muted">
+        Kontakt: <a href="mailto:tvuj@email.cz">tvuj@email.cz</a> · <a href="tel:+420000000000">+420 000 000 000</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>14denní zavedení kontrolních bodů<br/>pro dodatky a zveřejňování smluv</h1>
+      <p class="lead">
+        Krátký test bez IT a bez interních dat: zavedeme checklist + pravidlo dodatků a do 14 dnů to 1× použijeme na reálném případu.
+        Cíl je snížit dohledávání a zvýšit obhajitelnost procesu.
+      </p>
+
+      <div class="kpi">
+        <span class="pill">Bez IT</span>
+        <span class="pill">Bez interních dat</span>
+        <span class="pill">Auditovatelný krok</span>
+        <span class="pill">Reverzibilní test</span>
+      </div>
+
+      <div class="cta">
+        <a class="btn" href="mailto:tvuj@email.cz?subject=Kontrolní%20bod%20%E2%80%93%2020%20min%20(stop%2Ftest)&body=Dobr%C3%BD%20den%2C%0A%0Am%C3%A1m%20z%C3%A1jem%20o%2020%20min%20sch%C5%AFzku%20(stop%2F14denn%C3%AD%20test).%0APros%C3%ADm%20navrhn%C4%9Bte%202%20term%C3%ADny.%0A%0AD%C4%9Bkuji.">
+          Domluvit 20 min (stop/test)
+        </a>
+        <a class="btn secondary" href="#produkt">Co přesně dodáváme</a>
+      </div>
+      <p class="small muted">Pozn.: Nejde o audit ani právní posudek. Negarantujeme úspory; garantujeme zavedení a první použití (viz DoD).</p>
+    </section>
+
+    <div class="grid" id="produkt">
+      <section class="card col-7">
+        <h2>Výstupy (dodávka)</h2>
+        <ul>
+          <li><strong>Checklist</strong> – kontrolní otázky (volba: před podpisem / před zveřejněním)</li>
+          <li><strong>Pravidlo dodatků</strong> – zelená/žlutá/červená + výjimka (kdy je 2. podpis / krátké zdůvodnění)</li>
+          <li><strong>1str měsíční přehled</strong> z veřejných dat (Registr smluv) – jednoduchý dashboard v1</li>
+        </ul>
+      </section>
+
+      <section class="card col-5">
+        <h2>Definition of Done (DoD)</h2>
+        <ul>
+          <li>Jmenovaný <strong>owner</strong> (kdo může říct „odteď platí“)</li>
+          <li>Jedna interní věta: <strong>platí od data X</strong></li>
+          <li><strong>Použito min. 1×</strong> do 14 dnů (nebo pojmenovaná překážka proč ne)</li>
+        </ul>
+      </section>
+
+      <section class="card col-7">
+        <h2>Vstupy od obce (minimální kapacita)</h2>
+        <ul>
+          <li>1× owner (tajemník nebo finance)</li>
+          <li>2× 30 minut: instalace + ověření</li>
+          <li>1 reálný případ do 14 dnů (dodatek / zveřejnění)</li>
+        </ul>
+      </section>
+
+      <section class="card col-5">
+        <h2>Výluky</h2>
+        <ul>
+          <li>Nejde o audit ani právní posudek</li>
+          <li>Neřešíme správnost smluv; řešíme procesní kontrolní bod a dohledatelnost</li>
+          <li>Negarantujeme úspory; garantujeme zavedení a první použití</li>
+        </ul>
+      </section>
+
+      <section class="card col-12">
+        <h2>Cena a garance</h2>
+        <p class="muted" style="margin:0;">
+          Cena: <strong>39&nbsp;000 Kč bez DPH</strong> (14 dnů). Fakturace po instalaci.
+          <br/>
+          Garance: pokud při splnění vstupů (owner + 2×30 min + 1 případ) nedodáme DoD do 14 dnů, <strong>neúčtujeme / 100% kredit</strong>.
+        </p>
+      </section>
+
+      <section class="card col-12">
+        <h2>Kontakt (dodavatel)</h2>
+        <p style="margin:0;">
+          <strong>[Tvoje jméno]</strong><br/>
+          IČO: [doplnit] · Sídlo: [doplnit]<br/>
+          Email: <a href="mailto:tvuj@email.cz">tvuj@email.cz</a> · Tel: <a href="tel:+420000000000">+420 000 000 000</a>
+        </p>
+      </section>
+    </div>
+
+    <footer class="small muted">
+      <div>© <span id="y"></span> Kontrolní bod</div>
+      <div>Jednostránková specifikace produktu · bez marketingu · pro rychlé rozhodnutí stop/test</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
