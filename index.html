@@ -10,17 +10,16 @@
     :root{
       --bg:#f5f7fb;
       --surface:#ffffff;
-      --text:#0f172a;       /* slate-900 */
-      --muted:#475569;      /* slate-600 */
-      --line:#e2e8f0;       /* slate-200 */
-      --slate:#1e293b;      /* slate-800 */
-      --accent:#f59e0b;     /* amber-500 */
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#e2e8f0;
+      --slate:#1e293b;
+      --accent:#f59e0b;
       --max:1060px;
       --r:18px;
       --shadow: 0 10px 26px rgba(15,23,42,.07);
       --shadow2: 0 2px 12px rgba(15,23,42,.05);
 
-      /* UPDATED */
       --sec-gap: 70px;
       --sec-gap-mobile: 54px;
     }
@@ -38,12 +37,10 @@
     }
     a{ color: inherit; }
 
-    /* offset anchors for sticky header */
     section[id]{ scroll-margin-top: 86px; }
 
     .wrap{ max-width:var(--max); margin:0 auto; padding: 22px 18px 64px; }
 
-    /* Top bar */
     .topbar{
       position: sticky;
       top: 0;
@@ -75,7 +72,6 @@
     .right{
       display:flex; gap:10px; flex-wrap:wrap; align-items:center;
     }
-
     .nav{
       display:flex; gap:8px; flex-wrap:wrap; align-items:center;
       padding: 6px;
@@ -98,13 +94,11 @@
       border-color: var(--line);
     }
 
-    /* Icons */
     .ic{ width:16px; height:16px; display:inline-block; vertical-align:middle; }
     .ic-lg{ width:18px; height:18px; }
     .ic-muted svg{ stroke: var(--muted); }
     .ic-slate svg{ stroke: var(--slate); }
 
-    /* Buttons */
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
       padding: 10px 12px;
@@ -128,7 +122,6 @@
       background: linear-gradient(180deg, rgba(245,158,11,.40), rgba(245,158,11,.16));
     }
 
-    /* Sections / spacing */
     .section{ margin-top: var(--sec-gap); }
     .section-header{
       display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
@@ -139,7 +132,7 @@
     }
     .section-title h2{
       margin:0;
-      font-size: 30px;              /* UPDATED */
+      font-size: 30px;
       letter-spacing: -0.4px;
       color: var(--slate);
       line-height: 1.15;
@@ -151,10 +144,9 @@
       max-width: 78ch;
     }
 
-    /* Hero */
     .hero{ padding: 34px 0 10px; }
     h1{
-      margin: 0 0 14px; /* UPDATED: was 10px (+4) */
+      margin: 0 0 14px;
       font-size: 36px;
       line-height: 1.12;
       letter-spacing: -0.45px;
@@ -166,7 +158,7 @@
       color: var(--muted);
       font-size: 16.5px;
     }
-    .badges{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 22px; } /* UPDATED: was 18px (+4) */
+    .badges{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 22px; }
     .badge{
       display:inline-flex; align-items:center; gap:8px;
       padding: 9px 10px;
@@ -177,14 +169,13 @@
       font-size: 12.5px;
       box-shadow: var(--shadow);
     }
-    .hero-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 20px; } /* UPDATED: was 16px (+4) */
+    .hero-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 20px; }
     .note{
       margin-top: 12px;
       font-size: 12.5px;
       color: var(--muted);
     }
 
-    /* Layout */
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -201,7 +192,6 @@
     .span-7{ grid-column: span 7; }
     .span-5{ grid-column: span 5; }
     .span-6{ grid-column: span 6; }
-    .span-12{ grid-column: span 12; }
 
     .card h3{
       margin: 0 0 8px;
@@ -212,7 +202,6 @@
     li{ margin: 8px 0; display:flex; gap:10px; align-items:flex-start; }
     .li-text b{ color: var(--slate); }
 
-    /* Steps */
     .steps{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -231,7 +220,6 @@
     }
     .small{ font-size: 12.5px; color: var(--muted); }
 
-    /* FAQ */
     .faq details{
       border: 1px solid var(--line);
       border-radius: 16px;
@@ -250,7 +238,6 @@
     .faq summary::-webkit-details-marker{ display:none; }
     .faq .ans{ margin-top: 8px; color: var(--muted); }
 
-    /* Price */
     .price{
       display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:flex-start;
     }
@@ -261,20 +248,21 @@
     }
     .cta-row{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
 
-    /* Contact lines */
-    .contact-lines{ margin-top: 10px; }
+    /* UPDATED: no separators */
+    .contact-lines{ margin-top: 10px; display:grid; gap:10px; }
     .contact-line{
       display:flex; gap:10px; align-items:flex-start;
-      padding: 8px 0;
-      border-top: 1px solid var(--line);
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfdff;
+      box-shadow: var(--shadow2);
       color: var(--muted);
     }
-    .contact-line:first-child{ border-top: none; padding-top: 0; }
     .contact-line b{ color: var(--slate); }
     .contact-line a{ color: var(--slate); text-decoration: none; }
     .contact-line a:hover{ text-decoration: underline; }
 
-    /* Footer */
     footer{
       margin-top: 54px;
       padding-top: 16px;
@@ -297,7 +285,6 @@
 
 <body>
 
-  <!-- inline SVG symbol defs (icons) -->
   <svg width="0" height="0" style="position:absolute">
     <symbol id="i-check" viewBox="0 0 24 24">
       <path d="M20 6L9 17l-5-5" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -352,7 +339,8 @@
           <a href="#cena">Cena</a>
         </nav>
 
-        <a class="btn primary" href="mailto:TVUJ_EMAIL@DOMENA.CZ?subject=Kontroln%C3%AD%20bod%20%E2%80%93%2020%20min%20(stop%2Ftest)&body=Dobr%C3%BD%20den%2C%0A%0Am%C3%A1m%20z%C3%A1jem%20o%2020%20min%20sch%C5%AFzku%20(stop%2F14denn%C3%AD%20test).%0APros%C3%ADm%20navrhn%C4%9Bte%202%20term%C3%ADny.%0A%0AD%C4%9Bkuji.">
+        <!-- UPDATED: top CTA -> kontakt -->
+        <a class="btn primary" href="#kontakt">
           Domluvit 20 min
           <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span>
         </a>
@@ -401,36 +389,18 @@
         <section class="card span-7">
           <h3>Co přesně dodáváme</h3>
           <ul>
-            <li>
-              <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
-              <div class="li-text"><b>Checklist</b> – kontrolní otázky (volba: před podpisem / před zveřejněním)</div>
-            </li>
-            <li>
-              <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
-              <div class="li-text"><b>Pravidlo dodatků</b> – zelená/žlutá/červená + výjimka (kdy 2. podpis / zdůvodnění)</div>
-            </li>
-            <li>
-              <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
-              <div class="li-text"><b>1str měsíční přehled</b> z veřejných dat (Registr smluv) – dashboard v1</div>
-            </li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Checklist</b> – kontrolní otázky (volba: před podpisem / před zveřejněním)</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Pravidlo dodatků</b> – zelená/žlutá/červená + výjimka (kdy 2. podpis / zdůvodnění)</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>1str měsíční přehled</b> z veřejných dat (Registr smluv) – dashboard v1</div></li>
           </ul>
         </section>
 
         <section class="card span-5">
           <h3>Definition of Done (DoD)</h3>
           <ul>
-            <li>
-              <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
-              <div class="li-text">Jmenovaný <b>owner</b> (kdo může říct „odteď platí“)</div>
-            </li>
-            <li>
-              <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
-              <div class="li-text">Jedna interní věta: <b>platí od data X</b></div>
-            </li>
-            <li>
-              <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
-              <div class="li-text"><b>Použito min. 1×</b> do 14 dnů (nebo pojmenovaná překážka)</div>
-            </li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">Jmenovaný <b>owner</b> (kdo může říct „odteď platí“)</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">Jedna interní věta: <b>platí od data X</b></div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Použito min. 1×</b> do 14 dnů (nebo pojmenovaná překážka)</div></li>
           </ul>
         </section>
       </div>
@@ -490,22 +460,18 @@
 
         <section class="card span-6 faq" aria-label="FAQ">
           <h3>FAQ (co to není)</h3>
-
           <details>
             <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Je to audit / právní posudek?</summary>
             <div class="ans">Ne. Nehodnotíme správnost smluv. Zavádíme procesní kontrolní bod + dohledatelnost „kdo rozhodl a proč“.</div>
           </details>
-
           <details>
             <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Potřebujete interní data nebo IT přístupy?</summary>
             <div class="ans">Ne. Produkt funguje bez IT a bez interních dat.</div>
           </details>
-
           <details>
             <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Co když nemáme kapacitu?</summary>
             <div class="ans">Pokud není owner + 2×30 min + 1 případ, test nedává smysl. Radši stop než „papír do šuplíku“.</div>
           </details>
-
           <details>
             <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Proč to nemůžeme udělat sami?</summary>
             <div class="ans">Můžete. Platíte za hotový balíček + instalaci do toku a za to, že do 14 dnů proběhne reálné použití.</div>
@@ -538,12 +504,12 @@
           </div>
         </div>
 
+        <!-- UPDATED: only one button; goes to contact -->
         <div class="cta-row">
-          <a class="btn primary" href="mailto:TVUJ_EMAIL@DOMENA.CZ?subject=Kontroln%C3%AD%20bod%20%E2%80%93%2020%20min%20(stop%2Ftest)&body=Dobr%C3%BD%20den%2C%0A%0Am%C3%A1m%20z%C3%A1jem%20o%2020%20min%20sch%C5%AFzku%20(stop%2F14denn%C3%AD%20test).%0APros%C3%ADm%20navrhn%C4%9Bte%202%20term%C3%ADny.%0A%0AD%C4%9Bkuji.">
+          <a class="btn primary" href="#kontakt">
             Domluvit 20 min (stop/test)
             <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span>
           </a>
-          <a class="btn" href="#kontakt">Kontakt</a>
         </div>
       </div>
     </section>
@@ -557,7 +523,7 @@
           </span>
           <h2>Kontakt (dodavatel)</h2>
         </div>
-        <p class="section-sub">Bez identity to v B2G padá. Vyplň reálné údaje.</p>
+        <!-- UPDATED: removed subtext -->
       </div>
 
       <div class="card">
