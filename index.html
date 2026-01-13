@@ -3,10 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" href="./favicon.ico" sizes="any">
-<link rel="shortcut icon" href="./favicon.ico">
-  <title>Kontrolní bod – 14denní zavedení kontrolních bodů pro dodatky a zveřejňování smluv</title>
-  <meta name="description" content="14denní zavedení kontrolních bodů pro dodatky a zveřejňování smluv. Bez IT, bez interních dat." />
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="shortcut icon" href="./favicon.ico">
+  <title>Kontrolní bod – 14denní zavedení kontrolního kroku pro dodatky a zveřejnění smluv</title>
+  <meta name="description" content="14denní test: interní pravidlo „platí od…“ + checklist + 1× použití na reálném případu. Bez IT, bez interních dat." />
+
+  <!-- Basic social -->
+  <meta property="og:title" content="Kontrolní bod – 14denní zavedení kontrolního kroku" />
+  <meta property="og:description" content="Auditovatelný výsledek do 14 dnů: pravidlo „platí od…“ + checklist + 1× použití. Bez IT a bez interních dat." />
+  <meta property="og:type" content="website" />
 
   <style>
     :root{
@@ -22,8 +27,8 @@
       --shadow: 0 10px 26px rgba(15,23,42,.07);
       --shadow2: 0 2px 12px rgba(15,23,42,.05);
 
-      --sec-gap: 120px;
-      --sec-gap-mobile: 90px;
+      --sec-gap: 110px;
+      --sec-gap-mobile: 84px;
     }
 
     *{ box-sizing:border-box; }
@@ -38,9 +43,7 @@
       line-height: 1.55;
     }
     a{ color: inherit; }
-
     section[id]{ scroll-margin-top: 86px; }
-
     .wrap{ max-width:var(--max); margin:0 auto; padding: 22px 18px 64px; }
 
     .topbar{
@@ -57,9 +60,7 @@
       display:flex; align-items:center; justify-content:space-between; gap:12px;
       flex-wrap:wrap;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-    }
+    .brand{ display:flex; align-items:center; gap:10px; }
     .logo{
       width:34px; height:34px; border-radius:12px;
       background: linear-gradient(180deg, rgba(30,41,59,.10), rgba(30,41,59,.04));
@@ -71,9 +72,7 @@
     .brand b{ font-size:14px; letter-spacing:.2px; color: var(--slate); }
     .brand span{ font-size:12.5px; color:var(--muted); }
 
-    .right{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    }
+    .right{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
     .nav{
       display:flex; gap:8px; flex-wrap:wrap; align-items:center;
       padding: 6px;
@@ -84,7 +83,7 @@
     }
     .nav a{
       font-size: 12.5px;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--slate);
       text-decoration:none;
       padding: 7px 10px;
@@ -129,9 +128,7 @@
       display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
       margin-bottom: 16px;
     }
-    .section-title{
-      display:flex; align-items:center; gap:12px;
-    }
+    .section-title{ display:flex; align-items:center; gap:12px; }
     .section-title h2{
       margin:0;
       font-size: 30px;
@@ -143,7 +140,7 @@
       margin:0;
       font-size: 13px;
       color: var(--muted);
-      max-width: 78ch;
+      max-width: 82ch;
     }
 
     .hero{ padding: 34px 0 10px; }
@@ -156,7 +153,7 @@
     }
     .lead{
       margin: 0;
-      max-width: 86ch;
+      max-width: 92ch;
       color: var(--muted);
       font-size: 16.5px;
     }
@@ -171,7 +168,7 @@
       font-size: 12.5px;
       box-shadow: var(--shadow);
     }
-    .hero-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 20px; }
+    .hero-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 18px; }
     .note{
       margin-top: 12px;
       font-size: 12.5px;
@@ -194,6 +191,7 @@
     .span-7{ grid-column: span 7; }
     .span-5{ grid-column: span 5; }
     .span-6{ grid-column: span 6; }
+    .span-12{ grid-column: span 12; }
 
     .card h3{
       margin: 0 0 8px;
@@ -221,6 +219,23 @@
       font-weight: 900; color: var(--slate);
     }
     .small{ font-size: 12.5px; color: var(--muted); }
+
+    .pillrow{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top: 10px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fbfdff;
+      color: var(--muted);
+      font-size: 12.5px;
+      box-shadow: var(--shadow2);
+      text-decoration:none;
+    }
+    .pill:hover{ border-color:#cbd5e1; }
 
     .faq details{
       border: 1px solid var(--line);
@@ -250,7 +265,6 @@
     }
     .cta-row{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
 
-    /* UPDATED: no separators */
     .contact-lines{ margin-top: 10px; display:grid; gap:10px; }
     .contact-line{
       display:flex; gap:10px; align-items:flex-start;
@@ -265,6 +279,29 @@
     .contact-line a{ color: var(--slate); text-decoration: none; }
     .contact-line a:hover{ text-decoration: underline; }
 
+    .sample{
+      display:flex; gap:12px; align-items:flex-start;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      background: #fbfdff;
+      box-shadow: var(--shadow2);
+    }
+    .sample img{
+      width: 120px; height: 84px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .sample h4{
+      margin: 0 0 4px;
+      font-size: 13px;
+      color: var(--slate);
+    }
+    .sample p{ margin:0; color: var(--muted); font-size: 12.5px; }
+    .sample .links{ margin-top:8px; display:flex; gap:10px; flex-wrap:wrap; }
+
     footer{
       margin-top: 54px;
       padding-top: 16px;
@@ -275,18 +312,19 @@
     }
 
     @media (max-width: 920px){
-      .span-7,.span-5,.span-6{ grid-column: span 12; }
+      .span-7,.span-5,.span-6,.span-12{ grid-column: span 12; }
       .steps{ grid-template-columns: 1fr; }
       h1{ font-size: 30px; }
       .section{ margin-top: var(--sec-gap-mobile); }
       .section-title h2{ font-size: 26px; }
       section[id]{ scroll-margin-top: 120px; }
+      .sample{ flex-direction:column; }
+      .sample img{ width:100%; height:140px; }
     }
   </style>
 </head>
 
 <body>
-
   <svg width="0" height="0" style="position:absolute">
     <symbol id="i-check" viewBox="0 0 24 24">
       <path d="M20 6L9 17l-5-5" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -319,6 +357,12 @@
       <path d="M5 12h13" fill="none" stroke-width="2.2" stroke-linecap="round"/>
       <path d="M13 6l6 6-6 6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="none" stroke-width="2.0" stroke-linejoin="round"/>
+      <path d="M14 2v6h6" fill="none" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M8 13h8" fill="none" stroke-width="2.0" stroke-linecap="round"/>
+      <path d="M8 16h6" fill="none" stroke-width="2.0" stroke-linecap="round"/>
+    </symbol>
   </svg>
 
   <div class="topbar">
@@ -329,19 +373,19 @@
         </div>
         <div class="brand-text">
           <b>Kontrolní bod</b>
-          <span>Kontrolní body pro dodatky a zveřejňování smluv</span>
+          <span>Kontrolní krok pro dodatky a zveřejňování smluv</span>
         </div>
       </div>
 
       <div class="right">
         <nav class="nav" aria-label="Sekce">
           <a href="#produkt">Produkt</a>
+          <a href="#ukazky">Ukázky</a>
           <a href="#proces">Proces</a>
-          <a href="#vstupy">Vstupy</a>
+          <a href="#objednat">Jak objednat</a>
           <a href="#cena">Cena</a>
         </nav>
 
-        <!-- UPDATED: top CTA -> kontakt -->
         <a class="btn primary" href="#kontakt">
           Domluvit 20 min
           <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span>
@@ -352,26 +396,33 @@
 
   <div class="wrap">
     <section class="hero">
-      <h1>14denní zavedení kontrolních bodů<br/>pro dodatky a zveřejňování smluv</h1>
+      <h1>Kontrolní krok do 14 dnů:<br/>dodatky + zveřejnění smluv</h1>
 
       <p class="lead">
-        Krátký test bez IT a bez interních dat: zavedeme checklist + pravidlo dodatků a do 14 dnů to 1× použijeme na reálném případu.
-        Cíl je snížit dohledávání a zvýšit obhajitelnost.
+        Praktický test bez IT a bez interních dat. Dodáme checklist + pravidlo dodatků a vygenerujeme jednoduchou stopu pro kontrolu:
+        <b>interní věta „platí od …“ + 1× použití na reálném případu do 14 dnů</b> (nebo pojmenovaná překážka).
       </p>
 
       <div class="badges">
         <span class="badge"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-bolt"/></svg></span>Bez IT</span>
         <span class="badge"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span>Bez interních dat</span>
-        <span class="badge"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-clock"/></svg></span>Bez závazků</span>
-        <span class="badge"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Auditovatelný krok</span>
+        <span class="badge"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-clock"/></svg></span>14 dní</span>
+        <span class="badge"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Auditovatelný výsledek</span>
       </div>
 
       <div class="hero-actions">
-        <a class="btn primary" href="#cena">Stop / 14denní test <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></a>
+        <a class="btn primary" href="#objednat">
+          Stop / test rozhodnutí
+          <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span>
+        </a>
+        <a class="btn" href="#cena">
+          Cena a garance
+          <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span>
+        </a>
       </div>
 
       <div class="note">
-        Nejde o audit ani právní posudek. Negarantujeme úspory; garantujeme zavedení a první použití.
+        Není to audit ani právní posudek. Nehodnotíme správnost smluv. Zavádíme kontrolní krok + dohledatelnou stopu „kdo rozhodl a proč“.
       </div>
     </section>
 
@@ -384,33 +435,85 @@
           </span>
           <h2>Specifikace produktu</h2>
         </div>
-        <p class="section-sub">Jednostránkový instalační produkt. Cíl je zavést kontrolní bod do toku a mít dohledatelnou stopu.</p>
+        <p class="section-sub">Jednostránkový instalační produkt. Cíl: kontrolní krok v toku + dohledatelná stopa pro interní i externí kontrolu.</p>
       </div>
 
       <div class="grid">
         <section class="card span-7">
           <h3>Co přesně dodáváme</h3>
           <ul>
-            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Checklist (kontrolní seznam)</b> – kontrolní otázky (volba: před podpisem / před zveřejněním)</div></li>
-            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Pravidlo dodatků</b> – zelená/žlutá/červená + výjimka (kdy 2. podpis / zdůvodnění)</div></li>
-            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Jednostránkový měsíční přehled</b> z veřejných dat (Registr smluv)</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Checklist</b> – krátké kontrolní otázky (varianta: před podpisem / před zveřejněním)</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Pravidlo dodatků</b> – zelená/žlutá/červená + jasná výjimka (kdy 2. podpis / zdůvodnění)</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Měsíční přehled (v1)</b> z veřejných dat (Registr smluv) – pro jednoduchou kontrolu trendů</div></li>
           </ul>
-                    <p class="small" style="margin-top:12px;">
-  <b>Podklady:</b> veřejná data (Registr smluv) + 20 min mapování toku.<br/>
-  <b>Auditní stopa:</b> 1 interní pravidlo „platí od …“ + uložený checklist / zdůvodnění výjimky.<br/>
-  <b>Ověření:</b> 1× použití do 14 dnů (nebo pojmenovaná překážka).
-</p>
+
+          <p class="small" style="margin-top:12px;">
+            <b>Podklady:</b> veřejná data + 20 min mapování toku.<br/>
+            <b>Auditní stopa:</b> interní pravidlo „platí od …“ + uložený checklist / zdůvodnění výjimky.<br/>
+            <b>Ověření:</b> 1× použití do 14 dnů (nebo pojmenovaná překážka).
+          </p>
         </section>
 
         <section class="card span-5">
           <h3>Kdy je test splněn</h3>
           <ul>
-
-            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">Určená <b>odpovědná osoba</b> (která může říct „odteď platí“)</div></li>
-            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">Jedna interní věta: <b>platí od data X</b></div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">Určená <b>odpovědná osoba</b> (může říct „odteď platí“)</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">Existuje 1 interní věta: <b>„platí od data X“</b></div></li>
             <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Použito min. 1×</b> do 14 dnů (nebo pojmenovaná překážka)</div></li>
           </ul>
         </section>
+      </div>
+    </section>
+
+    <!-- Ukázky -->
+    <section class="section" id="ukazky">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="logo" style="width:34px;height:34px;border-radius:14px;">
+            <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-doc"/></svg></span>
+          </span>
+          <h2>Ukázky výstupů</h2>
+        </div>
+        <p class="section-sub">Aby to nebyla “metodika”. Tohle reálně dodáváme (redacted / anonymizované).</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-6">
+          <div class="sample">
+            <img src="./assets/ukazka-checklist.png" alt="Ukázka checklistu (anonymizované)">
+            <div>
+              <h4>Checklist (vzor)</h4>
+              <p>Krátké otázky + výsledek (OK / výjimka + zdůvodnění).</p>
+              <div class="links">
+                <a class="pill" href="./assets/ukazka-checklist.pdf"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-doc"/></svg></span>PDF ukázka</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card span-6">
+          <div class="sample">
+            <img src="./assets/ukazka-prehled.png" alt="Ukázka měsíčního přehledu (anonymizované)">
+            <div>
+              <h4>Měsíční přehled (v1)</h4>
+              <p>Jedna stránka. Z veřejných dat. Pro průběžnou kontrolu.</p>
+              <div class="links">
+                <a class="pill" href="./assets/ukazka-prehled.pdf"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-doc"/></svg></span>PDF ukázka</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card span-12">
+          <h3>Šablony pro nákup a auditní stopu</h3>
+          <p class="small" style="margin:0;">
+            Tyhle soubory zkracují práci financí a snižují tření při objednávce. (Nahraj sem své finální verze.)
+          </p>
+          <div class="pillrow">
+            <a class="pill" href="./assets/objednavka-sluzby.pdf"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-doc"/></svg></span>Objednávka služby (PDF)</a>
+            <a class="pill" href="./assets/akceptacni-protokol.pdf"><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-doc"/></svg></span>Akceptační protokol (PDF)</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -430,17 +533,57 @@
         <div class="steps">
           <div class="step">
             <div class="step-head"><span class="ic ic-slate ic-lg"><svg viewBox="0 0 24 24"><use href="#i-bolt"/></svg></span>1) Hovor 1 (2–4 min)</div>
-            <div class="small">Domluvíme Hovor 2. Bez detailů a bez posílání dlouhých podkladů.</div>
+            <div class="small">Kvalifikace + domluva Hovoru 2. Bez dlouhých materiálů.</div>
           </div>
           <div class="step">
             <div class="step-head"><span class="ic ic-slate ic-lg"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>2) Hovor 2 (20 min)</div>
-            <div class="small">Ukázka + mapování toku. Na konci stop / start 14denního testu.</div>
+            <div class="small">Ukázka + mapování toku. Na konci stop / start testu.</div>
           </div>
           <div class="step">
             <div class="step-head"><span class="ic ic-slate ic-lg"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span>3) Instalace + ověření</div>
-            <div class="small">2× 30 min. Platí od data X. Do 14 dnů 1× použito.</div>
+            <div class="small">2× 30 min. Interní „platí od…“. Do 14 dnů 1× použito.</div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Jak objednat -->
+    <section class="section" id="objednat">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="logo" style="width:34px;height:34px;border-radius:14px;">
+            <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-id"/></svg></span>
+          </span>
+          <h2>Jak se to u vás koupí</h2>
+        </div>
+        <p class="section-sub">Prakticky: aby finance nemusely vymýšlet proces a aby vznikla čistá stopa.</p>
+      </div>
+
+      <div class="grid">
+        <section class="card span-6">
+          <h3>Objednání</h3>
+          <ul>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Po Hovoru 2</b> pošlu 1stránkové shrnutí + návrh objednávky služby</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">Objednávku můžete poslat <b>e-mailem</b> (příp. datovou schránkou) – podle vašich zvyklostí</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Potvrzení přijetí</b> pošlu do 1 pracovního dne</div></li>
+          </ul>
+        </section>
+
+        <section class="card span-6">
+          <h3>Akceptace a fakturace</h3>
+          <ul>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">Dodání = <b>3 výstupy</b> + datum „platí od…“ + evidence 1. použití (nebo překážka)</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Akceptační protokol</b> (1 strana) – jednoduchá stopa pro kontrolu</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text"><b>Fakturace</b> po instalaci (po akceptaci)</div></li>
+          </ul>
+        </section>
+
+        <section class="card span-12">
+          <h3>Stop pravidlo (proč někdy raději odmítnu)</h3>
+          <p class="small" style="margin:0;">
+            Pokud není odpovědná osoba + 2×30 min + 1 případ do 14 dnů, test nedává smysl. Radši stop než “papír do šuplíku”.
+          </p>
+        </section>
       </div>
     </section>
 
@@ -453,14 +596,14 @@
           </span>
           <h2>Co je potřeba od vás</h2>
         </div>
-        <p class="section-sub">Minimum, bez kterého test nedává smysl.</p>
+        <p class="section-sub">Minimum, bez kterého test nebude mít reálný dopad.</p>
       </div>
 
       <div class="grid">
         <section class="card span-6">
           <h3>Minimální kapacita</h3>
           <ul>
-            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">1× <b>odpovědná osoba</b> (tajemník nebo finance)</div></li>
+            <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">1× <b>odpovědná osoba</b> (typicky tajemník / finance)</div></li>
             <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">2× <b>30 minut</b> (instalace, ověření)</div></li>
             <li><span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><div class="li-text">1 <b>reálný případ</b> do 14 dnů (dodatek / zveřejnění)</div></li>
           </ul>
@@ -470,19 +613,15 @@
           <h3>FAQ (co to není)</h3>
           <details>
             <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Je to audit / právní posudek?</summary>
-            <div class="ans">Ne. Nehodnotíme správnost smluv. Zavádíme procesní kontrolní bod + dohledatelnost „kdo rozhodl a proč“.</div>
+            <div class="ans">Ne. Nehodnotíme správnost smluv. Zavádíme kontrolní krok + dohledatelnost rozhodnutí.</div>
           </details>
           <details>
             <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Potřebujete interní data nebo IT přístupy?</summary>
             <div class="ans">Ne. Produkt funguje bez IT a bez interních dat.</div>
           </details>
           <details>
-            <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Co když nemáme kapacitu?</summary>
-            <div class="ans">Pokud není odpovědná osoba + 2×30 min + 1 případ, test nedává smysl. Radši stop než „papír do šuplíku“.</div>
-          </details>
-          <details>
             <summary><span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Proč to nemůžeme udělat sami?</summary>
-            <div class="ans">Můžete. Platíte za hotový balíček + instalaci do toku a za to, že do 14 dnů proběhne reálné použití.</div>
+            <div class="ans">Můžete. Platíte za hotový balíček + instalaci do toku a ověření reálným použitím do 14 dnů.</div>
           </details>
         </section>
       </div>
@@ -497,28 +636,36 @@
           </span>
           <h2>Cena a garance</h2>
         </div>
-        <p class="section-sub">Transparentní, podmíněná garance (aby se z toho nestal “papír do šuplíku”).</p>
+        <p class="section-sub">Jedna cena. Jedna auditovatelná garance.</p>
       </div>
 
       <div class="card">
         <div class="price">
           <div class="pricebox">
             <div><strong>Cena:</strong> 39 000 Kč (nejsem plátce DPH)</div>
-            <div><strong>Fakturace:</strong> po instalaci</div>
+            <div><strong>Fakturace:</strong> po instalaci (po akceptaci)</div>
           </div>
-          <div class="small" style="flex: 1 1 380px;">
-            <strong>Garance (podmíněná):</strong> 
-              pokud při splnění vstupů (odpovědná osoba + 2×30 min + 1 případ) nezavedeme pravidlo „platí od …“ a nepoužijeme checklist alespoň 1× do 14 dnů, neúčtujeme / 100% kredit.
+          <div class="small" style="flex: 1 1 420px;">
+            <strong>Garance (podmíněná):</strong>
+            pokud dodáte vstupy (odpovědná osoba + 2×30 min + 1 případ) a do 14 dnů nebude existovat interní pravidlo „platí od …“ a 1× použití checklistu,
+            <b>nevystavím fakturu</b>.
           </div>
         </div>
 
-     
         <div class="cta-row">
           <a class="btn primary" href="#kontakt">
             Domluvit 20 min (stop/test)
             <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span>
           </a>
+          <a class="btn" href="mailto:kontakt@kontrolnibod.cz?subject=Objednávka%20–%20Kontrolní%20bod%20(14denní%20test)">
+            Poslat objednávku
+            <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span>
+          </a>
         </div>
+
+        <p class="small" style="margin-top:12px;">
+          Pozn.: E-mail <b>kontakt@kontrolnibod.cz</b> je placeholder. Nahraď reálnou adresou (a zahoď “TVUJ_EMAIL…” navždy).
+        </p>
       </div>
     </section>
 
@@ -529,28 +676,33 @@
           <span class="logo" style="width:34px;height:34px;border-radius:14px;">
             <span class="ic ic-slate"><svg viewBox="0 0 24 24"><use href="#i-mail"/></svg></span>
           </span>
-          <h2>Kontakt (dodavatel)</h2>
+          <h2>Kontakt a identifikace dodavatele</h2>
         </div>
-       
+        <p class="section-sub">Pro objednávku a pro interní evidenci.</p>
       </div>
 
       <div class="card">
         <p style="margin:0; color: var(--muted);">
           <strong style="color: var(--slate);">Jan Zimmer</strong><br/>
+          <span class="small">Preferovaně: domluvit 20 min, pak posílám 1stránkové shrnutí + návrh objednávky.</span>
         </p>
 
         <div class="contact-lines">
           <div class="contact-line">
             <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-mail"/></svg></span>
-            <div><b>Email:</b> <a href="mailto:TVUJ_EMAIL@DOMENA.CZ">TVUJ_EMAIL@DOMENA.CZ</a></div>
+            <div><b>Email:</b> <a href="mailto:kontakt@kontrolnibod.cz">kontakt@kontrolnibod.cz</a> <span class="small">(TODO: nahraď reálným)</span></div>
           </div>
           <div class="contact-line">
             <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg></span>
-            <div><b>Telefon:</b> <a href="tel:+420000000000">+420 732 544 352</a></div>
+            <div><b>Telefon:</b> <a href="tel:+420732544352">+420 732 544 352</a></div>
           </div>
           <div class="contact-line">
             <span class="ic ic-muted"><svg viewBox="0 0 24 24"><use href="#i-id"/></svg></span>
-            <div><b>IČO:</b> 09365524 · <b>Sídlo:</b> Milevská 1106/24, 140 00, Praha 4 - Krč</div>
+            <div>
+              <b>IČO:</b> 09365524<br/>
+              <b>Sídlo:</b> Milevská 1106/24, 140 00 Praha 4 – Krč<br/>
+              <b>Datová schránka:</b> <span class="small">(TODO: doplň, pokud máš)</span>
+            </div>
           </div>
         </div>
       </div>
@@ -558,7 +710,7 @@
 
     <footer>
       <div>© <span id="y"></span> Kontrolní bod</div>
-      <div>Produktová specifikace pro rychlé rozhodnutí stop/test</div>
+      <div>Jednostránková specifikace pro rychlé rozhodnutí stop/test</div>
     </footer>
   </div>
 
