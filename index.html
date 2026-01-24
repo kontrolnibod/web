@@ -13,113 +13,175 @@
 
   <style>
     :root{
-      --bg:#0b1220;
-      --card:#101a2e;
-      --text:#e8eefc;
-      --muted:#a8b3d4;
-      --line:rgba(232,238,252,.10);
+      /* COLORS: back to your previous palette */
+      --bg:#f5f7fb;
+      --surface:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#e2e8f0;
+      --slate:#1e293b;
       --accent:#f59e0b;
+
       --max: 980px;
       --r: 18px;
+      --shadow: 0 10px 26px rgba(15,23,42,.07);
+      --shadow2: 0 2px 12px rgba(15,23,42,.05);
+
+      /* MORE SPACE BETWEEN SECTIONS */
+      --sec-gap: 110px;
+      --sec-gap-mobile: 84px;
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(900px 420px at 20% -10%, rgba(245,158,11,.12), transparent 60%),
-                  radial-gradient(900px 420px at 90% 0%, rgba(168,179,212,.10), transparent 55%),
+      background: radial-gradient(900px 420px at 20% -10%, rgba(245,158,11,.10), transparent 60%),
+                  radial-gradient(900px 420px at 90% 0%, rgba(30,41,59,.10), transparent 55%),
                   var(--bg);
-      color:var(--text);
-      line-height:1.55;
+      color: var(--text);
+      line-height: 1.55;
     }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding: 28px 18px 64px;}
+    a{ color: inherit; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 22px 18px 64px; }
+
     .top{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding: 12px 0 22px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(245,247,251,.86);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
+    }
+    .top-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
       flex-wrap:wrap;
     }
-    .brand{display:flex; align-items:center; gap:10px;}
+    .brand{ display:flex; align-items:center; gap:10px; }
     .mark{
       width:36px; height:36px; border-radius:12px;
-      background: linear-gradient(180deg, rgba(245,158,11,.30), rgba(245,158,11,.08));
-      border: 1px solid rgba(245,158,11,.35);
+      background: linear-gradient(180deg, rgba(30,41,59,.10), rgba(30,41,59,.04));
+      border:1px solid var(--line);
       display:grid; place-items:center;
-      font-weight:800; color:#111827;
+      box-shadow: var(--shadow2);
+      font-weight: 900;
+      color: var(--slate);
     }
-    .brand b{display:block; font-size:14px; letter-spacing:.2px;}
-    .brand span{display:block; font-size:12.5px; color:var(--muted);}
-    .btnrow{display:flex; gap:10px; flex-wrap:wrap;}
+    .brand b{ display:block; font-size:14px; letter-spacing:.2px; color: var(--slate); }
+    .brand span{ display:block; font-size:12.5px; color:var(--muted); }
+
+    .btnrow{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
       padding: 10px 12px;
       border-radius: 12px;
       border: 1px solid var(--line);
-      background: rgba(16,26,46,.65);
+      background: var(--surface);
       text-decoration:none;
-      font-weight:800;
-      white-space:nowrap;
+      font-weight: 900;
+      color: var(--slate);
+      box-shadow: var(--shadow2);
+      white-space: nowrap;
     }
+    .btn:hover{ border-color:#cbd5e1; }
     .btn.primary{
       border-color: rgba(245,158,11,.45);
-      background: linear-gradient(180deg, rgba(245,158,11,.28), rgba(245,158,11,.10));
+      background: linear-gradient(180deg, rgba(245,158,11,.34), rgba(245,158,11,.14));
+      color: #111827;
     }
-    .hero{padding: 26px 0 8px;}
+    .btn.primary:hover{
+      border-color: rgba(245,158,11,.65);
+      background: linear-gradient(180deg, rgba(245,158,11,.40), rgba(245,158,11,.16));
+    }
+
+    section[id]{ scroll-margin-top: 110px; }
+
+    .hero{ padding: 34px 0 10px; }
     h1{
-      margin:0 0 12px;
-      font-size: 34px;
+      margin: 0 0 14px;
+      font-size: 36px;
       line-height: 1.12;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.45px;
+      color: var(--slate);
     }
-    .lead{margin:0; color:var(--muted); max-width: 80ch; font-size: 16px;}
-    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px;}
+    .lead{
+      margin: 0;
+      max-width: 92ch;
+      color: var(--muted);
+      font-size: 16.5px;
+    }
+
+    .chips{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 18px; }
     .chip{
-      padding: 8px 10px;
+      padding: 9px 10px;
       border:1px solid var(--line);
       border-radius: 999px;
-      background: rgba(16,26,46,.55);
+      background: var(--surface);
       color: var(--muted);
       font-size: 12.5px;
+      box-shadow: var(--shadow);
     }
-    .grid{display:grid; grid-template-columns: repeat(12,1fr); gap:14px; margin-top: 18px;}
+
+    .section{ margin-top: var(--sec-gap); }
     .card{
-      grid-column: span 12;
-      background: rgba(16,26,46,.72);
+      background: var(--surface);
       border: 1px solid var(--line);
       border-radius: var(--r);
-      padding: 16px;
+      padding: 18px;
+      box-shadow: var(--shadow);
     }
-    .card h2{margin:0 0 10px; font-size: 16px;}
-    ul{margin:0; padding:0; list-style:none; color: var(--muted);}
-    li{margin: 8px 0;}
-    .kpi{display:grid; gap:8px; margin-top: 10px; color: var(--muted); font-size: 13px;}
-    .kpi b{color:var(--text)}
-    .two{grid-column: span 6;}
-    .note{margin-top:10px; color:var(--muted); font-size:12.5px;}
-    .contact{
-      display:grid; gap:10px; margin-top: 10px;
-      color: var(--muted);
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 14px;
     }
-    .contact b{color:var(--text)}
+    .two{ grid-column: span 6; }
+    .one{ grid-column: span 12; }
+
+    .card h2{ margin:0 0 10px; font-size: 16px; color: var(--slate); }
+    ul{ margin:0; padding:0; list-style:none; color: var(--muted); }
+    li{ margin: 8px 0; }
+    .kpi{ display:grid; gap:8px; margin-top: 10px; color: var(--muted); font-size: 13px; }
+    .kpi b{ color: var(--slate); }
+    .note{ margin-top:10px; color: var(--muted); font-size:12.5px; }
+
+    .contact{ display:grid; gap:10px; margin-top: 10px; color: var(--muted); }
+    .contact b{ color: var(--slate); }
+    .contact a{ color: var(--slate); text-decoration:none; }
+    .contact a:hover{ text-decoration: underline; }
+
     footer{
-      margin-top: 26px;
-      padding-top: 14px;
+      margin-top: 54px;
+      padding-top: 16px;
       border-top: 1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
       color: var(--muted);
       font-size: 12.5px;
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
+
     @media (max-width: 920px){
-      h1{font-size: 28px;}
-      .two{grid-column: span 12;}
+      h1{ font-size: 30px; }
+      .two{ grid-column: span 12; }
+      .section{ margin-top: var(--sec-gap-mobile); }
+      section[id]{ scroll-margin-top: 140px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="top">
+  <div class="top">
+    <div class="top-inner">
       <div class="brand">
         <div class="mark">KB</div>
         <div>
@@ -132,8 +194,10 @@
         <a class="btn" href="#jak">Jak to probíhá</a>
       </div>
     </div>
+  </div>
 
-    <section class="hero">
+  <div class="wrap">
+    <section class="hero" id="top">
       <h1>Za 14 dní nastavím kontrolu, aby smlouvy neležely nezveřejněné.</h1>
       <p class="lead">
         Praktická implementace bez velkého IT projektu: jednoduchá evidence smluv, termíny, jasná odpovědnost a krátký týdenní přehled pro vedení.
@@ -148,52 +212,64 @@
       </div>
     </section>
 
-    <div class="grid">
-      <section class="card two">
-        <h2>Co přesně dodám</h2>
-        <ul>
-          <li>1) Tabulka evidence smluv (stav, termín, odpovědnost)</li>
-          <li>2) Jednoduché pravidlo termínů + eskalace (kdo řeší zpoždění)</li>
-          <li>3) Týdenní přehled: co je včas / co je po termínu / proč</li>
-        </ul>
-        <div class="note">Pozn.: Nehodnotím „správnost“ smluv. Řeším dohledatelnost a řízení procesu.</div>
-      </section>
-
-      <section class="card two">
-        <h2>Jak poznáte, že to funguje</h2>
-        <div class="kpi">
-          <div><b>KPI 1:</b> % smluv zveřejněných do 10 dnů</div>
-          <div><b>KPI 2:</b> počet smluv po 30 dnech (cílově 0 nových)</div>
-          <div><b>KPI 3:</b> medián dní k zveřejnění (musí klesat)</div>
+    <section class="section" id="co">
+      <div class="grid">
+        <div class="card two">
+          <h2>Co přesně dodám</h2>
+          <ul>
+            <li>1) Tabulka evidence smluv (stav, termín, odpovědnost)</li>
+            <li>2) Jednoduché pravidlo termínů + eskalace (kdo řeší zpoždění)</li>
+            <li>3) Týdenní přehled: co je včas / co je po termínu / proč</li>
+          </ul>
+          <div class="note">Pozn.: Nehodnotím „správnost“ smluv. Řeším dohledatelnost a řízení procesu.</div>
         </div>
-        <div class="note">Výsledek je vidět na číslech, ne na slibech.</div>
-      </section>
 
-      <section class="card" id="jak">
-        <h2>Jak to probíhá</h2>
-        <ul>
-          <li><b>20 min call:</b> stop / start. Pokud nedává smysl, řeknu stop.</li>
-          <li><b>14 dní:</b> nastavím evidenci, role, termíny, týdenní přehled.</li>
-          <li><b>Další krok:</b> pokud chcete, navážu 60–90denní implementací širších změn.</li>
-        </ul>
-      </section>
+        <div class="card two">
+          <h2>Jak poznáte, že to funguje</h2>
+          <div class="kpi">
+            <div><b>KPI 1:</b> % smluv zveřejněných do 10 dnů</div>
+            <div><b>KPI 2:</b> počet smluv po 30 dnech (cílově 0 nových)</div>
+            <div><b>KPI 3:</b> medián dní k zveřejnění (musí klesat)</div>
+          </div>
+          <div class="note">Výsledek je vidět na číslech, ne na slibech.</div>
+        </div>
+      </div>
+    </section>
 
-      <section class="card" id="kontakt">
-        <h2>Kontakt a identifikace</h2>
-        <div class="contact">
-          <div><b>Jméno:</b> Jan Zimmer</div>
-          <div><b>E-mail:</b> <a href="mailto:TVUJ_EMAIL@DOMENA.CZ">TVUJ_EMAIL@DOMENA.CZ</a></div>
-          <div><b>Telefon:</b> <a href="tel:+420732544352">+420 732 544 352</a></div>
-          <div><b>IČO:</b> 09365524</div>
-          <div><b>Sídlo:</b> Milevská 1106/24, 140 00 Praha 4 – Krč</div>
+    <section class="section" id="jak">
+      <div class="grid">
+        <div class="card one">
+          <h2>Jak to probíhá</h2>
+          <ul>
+            <li><b>20 min call:</b> stop / start. Pokud nedává smysl, řeknu stop.</li>
+            <li><b>14 dní:</b> nastavím evidenci, role, termíny, týdenní přehled.</li>
+            <li><b>Další krok:</b> pokud chcete, navážu 60–90denní implementací širších změn.</li>
+          </ul>
         </div>
-        <div class="btnrow" style="margin-top:12px;">
-          <a class="btn primary" href="mailto:TVUJ_EMAIL@DOMENA.CZ?subject=Kontroln%C3%AD%20bod%20%E2%80%94%2020%20min%20call">Napsat e-mail</a>
-          <a class="btn" href="tel:+420732544352">Zavolat</a>
+      </div>
+    </section>
+
+    <section class="section" id="kontakt">
+      <div class="grid">
+        <div class="card one">
+          <h2>Kontakt a identifikace</h2>
+          <div class="contact">
+            <div><b>Jméno:</b> Jan Zimmer</div>
+            <div><b>E-mail:</b> <a href="mailto:TVUJ_EMAIL@DOMENA.CZ">TVUJ_EMAIL@DOMENA.CZ</a></div>
+            <div><b>Telefon:</b> <a href="tel:+420732544352">+420 732 544 352</a></div>
+            <div><b>IČO:</b> 09365524</div>
+            <div><b>Sídlo:</b> Milevská 1106/24, 140 00 Praha 4 – Krč</div>
+          </div>
+
+          <div class="btnrow" style="margin-top:12px;">
+            <a class="btn primary" href="mailto:TVUJ_EMAIL@DOMENA.CZ?subject=Kontroln%C3%AD%20bod%20%E2%80%94%2020%20min%20call">Napsat e-mail</a>
+            <a class="btn" href="tel:+420732544352">Zavolat</a>
+          </div>
+
+          <div class="note">Vyměň placeholder e-mail. Pokud necháš placeholder, působíš nekompetentně.</div>
         </div>
-        <div class="note">Vyměň placeholder e-mail. Pokud necháš placeholder, působíš nekompetentně.</div>
-      </section>
-    </div>
+      </div>
+    </section>
 
     <footer>
       <div>© <span id="y"></span> Kontrolní bod</div>
